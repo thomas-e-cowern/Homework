@@ -18,7 +18,7 @@ window.onload = function () {
 	// Using album id to get album title	
 	for (var i = 0; i < albums.length; i++) {
 		if (albums[i].id == albumId) {
-			document.getElementById("albumTitle").innerHTML = "Title: " + albums[i].title
+			document.getElementById("albumTitle").innerHTML = "Album Title: " + albums[i].title
 			break;
 		}
 	}
@@ -74,3 +74,24 @@ function getPhotos (albumId) {
 	});
 }
 
+// Search photo titles
+function search () {
+	// Declare variables
+	var input, filter, ul, li, a, i, txtValue;
+	input = document.getElementById('search').value;
+	console.log(input);
+	filter = input.toUpperCase();
+	ul = document.getElementById("photos");
+	li = ul.getElementsByTagName('li');
+
+	// Loop through all list items, and hide those who don't match the search query
+	for (var i = 0; i < li.length; i++) {
+		p = li[i].getElementsByTagName("p")[0];
+		txtValue = p.textContent || p.innerText;
+		if (txtValue.toUpperCase().indexOf(filter) > -1) {
+			li[i].style.display = "";
+		} else {
+			li[i].style.display = "none";
+		}
+	}
+}

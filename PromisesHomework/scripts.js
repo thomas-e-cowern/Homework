@@ -11,7 +11,6 @@ window.onload = function () {
 		loadPage("post");
 		loadPage("album");
 	}
-		
 }
 	
 // Initial page set up when no user
