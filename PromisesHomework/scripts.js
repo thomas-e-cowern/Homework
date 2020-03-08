@@ -142,7 +142,7 @@ function loadPage(list) {
 					li.innerHTML += "Title " + post.id + ": " + post.title;
 				});
 	} else {
-		var albumResults = JSON.parse(localStorage.getItem("posts"));
+		var albumResults = JSON.parse(localStorage.getItem("albums"));
 		var ul = document.getElementById("albums");
 			albumResults.forEach(function(album){
 				var li = document.createElement('li');
