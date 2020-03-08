@@ -34,7 +34,7 @@ function fetchName (name) {
 		.then(function(response) {
 			return response.json();
 		}).then(function(data) {
-		let searchResults = data;
+		let searchResults = data;	
 		var i;
 			var info = {};
 			for (i = 0; i < searchResults.length; i++) { 
@@ -137,7 +137,7 @@ function loadPage(list) {
 					ul.appendChild(li);
 					li.addEventListener("click", function (e) {
 						console.log(event.target.innerHTML);
-						location.href = "Post.html"
+						location.href = "Post.html?post="  + encodeURIComponent(post.id);
 					})
 					li.innerHTML += "Title " + post.id + ": " + post.title;
 				});
@@ -149,7 +149,7 @@ function loadPage(list) {
 				ul.appendChild(li);
 				li.addEventListener("click", function (e) {
 					console.log(event.target.innerHTML);
-					location.href = "Album.html"
+					location.href = "Album.html?album=" + encodeURIComponent(album.id);
 				})
 				li.innerHTML +=  "Album " + album.id + ": " + album.title;
 			});
