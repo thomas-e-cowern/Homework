@@ -1,5 +1,9 @@
 window.onload = function () {
+	
+	// Loading posts from local storage
 	var posts = JSON.parse(localStorage.getItem("posts"));
+	
+	// // Getting post id from url
 	var url = document.location.href,
 			params = url.split('?')[1].split('&'),
 			data = {}, tmp;
@@ -7,29 +11,29 @@ window.onload = function () {
 			 tmp = params[i].split('=');
 			 data[tmp[0]] = tmp[1];
 		}
-	console.log(data);
 	var postId = data.post;
-	console.log("PiD: " + postId)
-	console.log(data.post);	
-	console.log(url);
-	console.log(posts);
+	
+	// Displaying post title and body
 	for (var i = 0; i < posts.length; i++) {
 		if (posts[i].id == postId) {
-			console.log("id: " + posts[i].id + " postId: " + postId + " matches");
 			document.getElementById("postTitle").innerHTML = posts[i].title;
 			document.getElementById("postText").innerHTML = posts[i].body;	
 			break;
 		}
 	}
 	
+	// Calling get comments to, well, get comments.
 	getComments(postId);
 }
 
+// back to login page
 function goBack () {
 	console.log("Back button clicked");
 	window.history.back();
 }
 
+// Gets comments base on post id, then creates a list and displays and
+// saves to local storage
 function getComments (postId) {
 	console.log("ID:" + postId);
 	let url = "https://jsonplaceholder.typicode.com/comments/" 	
